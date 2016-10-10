@@ -2,7 +2,7 @@ package ua.edu.ucu.tempseries;
 import java.lang.Math;
 
 public class TemperatureSeriesAnalysis {
-    double[] lst;
+    double[] lst = new double[10];
     int index = 0;
     public TemperatureSeriesAnalysis() {
 
@@ -157,18 +157,19 @@ public class TemperatureSeriesAnalysis {
 
     public int addTemps(double... temps) throws IllegalArgumentException {
         int sum = 0;
+        int index = 0;
         if (lst.length == 0) {
             throw new IllegalArgumentException();
         }
-        if (lst[-1] == 0.0) {
-            double_array();
-            for (int i = 0; i < temps.length; i++) {
-                lst[lst.length + 1] = temps[i];
-            }
+        for (int i = 0; i < lst.length;i++){
+            if(lst[i] != 0.0){
+                index++;
 
+            }
         }
+        double_array();
         for (int i = 0; i < temps.length; i++) {
-            lst[lst.length + 1] = temps[i];
+            lst[index +1] = temps[i];
 
         }
         for (int i = 0; i < lst.length; i++){
